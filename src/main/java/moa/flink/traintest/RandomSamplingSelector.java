@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 - Christophe Salperwyck
+ * Copyright 2025 - Christophe Salperwyck
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,8 @@ public class RandomSamplingSelector implements OutputSelector<Example<Instance>>
 	public final static Iterable<String> TRAIN_LIST = Collections.singletonList(TRAIN);
 	
 	private static final long serialVersionUID = 1L;
-	private double split;
-	private MersenneTwister rand = new MersenneTwister(11);
+	private final double split;
+	private final MersenneTwister rand = new MersenneTwister(11);
 	
 	public RandomSamplingSelector(double split) {
 		this.split = split;

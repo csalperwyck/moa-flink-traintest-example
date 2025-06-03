@@ -51,7 +51,7 @@ public class TrainTestRun {
 		// predict on the test stream, update the classifier when there is a new version
 		testStream.connect(classifier)
 			.flatMap(new ClassifyAndUpdateClassifierFunction())
-			.countWindowAll(10_000).aggregate(new PerformanceFunction()) // aggregate performance on a window
+			.countWindowAll(1_000).aggregate(new PerformanceFunction()) // aggregate performance on a window
 			.print(); // show results
 		
 		// fire execution

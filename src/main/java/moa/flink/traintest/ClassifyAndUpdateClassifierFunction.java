@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 - Christophe Salperwyck
+ * Copyright 2025 - Christophe Salperwyck
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,12 +31,12 @@ public class ClassifyAndUpdateClassifierFunction implements CoFlatMapFunction<Ex
 	private Classifier classifier = new NoChange(); //default classifier - return 0 if didn't learn
 
 	@Override
-	public void flatMap1(Example<Instance> value, Collector<Boolean> out) throws Exception {
+	public void flatMap1(Example<Instance> value, Collector<Boolean> out) {
 		out.collect(classifier.correctlyClassifies(value.getData()));
 	}
 
 	@Override
-	public void flatMap2(Classifier classifier, Collector<Boolean> out) throws Exception {
+	public void flatMap2(Classifier classifier, Collector<Boolean> out) {
 		//update the classifier when a new version is sent
 		this.classifier = classifier;
 		

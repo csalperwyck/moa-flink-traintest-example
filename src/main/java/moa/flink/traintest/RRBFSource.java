@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 - Christophe Salperwyck
+ * Copyright 2025 - Christophe Salperwyck
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,10 @@ public class RRBFSource extends RichParallelSourceFunction<Example<Instance>> {
 	
 		private static final long serialVersionUID = 1L;
 		private boolean isRunning = false;
-		private RandomRBFGenerator rrbf = new RandomRBFGenerator();
+		private final RandomRBFGenerator rrbf = new RandomRBFGenerator();
 
 		@Override
-		public void open(Configuration parameters) throws Exception {
+		public void open(Configuration parameters) {
 			rrbf.prepareForUse();
 		}
 		
@@ -41,7 +41,7 @@ public class RRBFSource extends RichParallelSourceFunction<Example<Instance>> {
 		}
 
 		@Override
-		public void run(SourceContext<Example<Instance>> sc) throws Exception {
+		public void run(SourceContext<Example<Instance>> sc) {
 			isRunning = true;
 			while (isRunning) {
 				sc.collect(rrbf.nextInstance());

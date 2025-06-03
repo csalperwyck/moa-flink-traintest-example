@@ -21,13 +21,14 @@
 		<dependency>
 			<groupId>nz.ac.waikato.cms.moa</groupId>
 			<artifactId>moa</artifactId>
-			<version>2019.05.0</version>
+			<version>2024.07.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java -->
 		<dependency>
-		    <groupId>org.apache.flink</groupId>
-		    <artifactId>flink-streaming-java_2.12</artifactId>
-		    <version>1.8.0</version>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-streaming-java</artifactId>
+			<version>2.0.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

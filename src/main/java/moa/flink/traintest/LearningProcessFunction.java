@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 - Christophe Salperwyck
+ * Copyright 2025 - Christophe Salperwyck
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,9 @@ import moa.core.Example;
 public class LearningProcessFunction extends ProcessFunction<Example<Instance>, Classifier> {
 
 	private static final long serialVersionUID = 1L;
-	private Class<? extends Classifier> clazz;
+	private final Class<? extends Classifier> clazz;
 	private Classifier classifier;
-	private int updateSize;
+	private final int updateSize;
 	private long nbExampleSeen;
 
 	public LearningProcessFunction(Class<? extends Classifier> clazz, int updateSize) {
@@ -39,14 +39,14 @@ public class LearningProcessFunction extends ProcessFunction<Example<Instance>, 
 	}
 	
 	@Override
-	public void open(Configuration parameters) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void open(Configuration parameters) throws InstantiationException, IllegalAccessException {
 		classifier = clazz.newInstance();
 		classifier.prepareForUse();
 	}
 
 	@Override
 	public void processElement(Example<Instance> record, ProcessFunction<Example<Instance>, Classifier>.Context arg1,
-			Collector<Classifier> collector) throws Exception {
+			Collector<Classifier> collector) {
 
 		nbExampleSeen++;
 		classifier.trainOnInstance(record);
